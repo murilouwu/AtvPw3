@@ -1,0 +1,156 @@
+@import 'preset.css';
+
+body{
+    background-image: url(../imgs/BackHome.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    flex-direction: row;
+    justify-content: space-between;
+}
+    .barLine{
+        height: 100vh;
+        display: flex;
+        flex-direction: row;
+        color: var(--corE);
+        justify-content: center;
+        align-items: center;
+        font-size: 6vh;
+    }
+        .barLine .ulBar{
+            height: 100vh;
+            width: 0.2vw;
+            background-color: var(--corE);
+            margin-left: 5vw;
+        }
+        .barLine i{
+            margin-left: 2vw;
+        }
+        .barLine .TitleSite{
+            font-family: monospace;
+            margin-left: 1vw;
+        }
+    .LateralMain{
+        height: 60vh;
+        width: 22vw;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+        .UlMaster{
+            color: var(--corA);
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            width: 96%;
+            flex-direction: column;
+            margin-top: 3vh;
+            padding: 2%;
+            background-color: rgb(22 10 64 / 9%);
+            border-radius: 5px;
+        }
+            .UlMaster i{
+                color: var(--corE);
+                font-size: 3vh;
+            }
+            .UlMaster .btn{
+                color: var(--corD);
+                background-color: rgb(0 0 0 / 0);
+                font-size: 2vh;
+                font-family: fangsong;
+                font-weight: bold;
+                border: none;
+                border-bottom: 0.4vh solid var(--corC);
+                width: 80%;
+                text-align: left;
+                padding: 0% 10%;
+                height: 4vh;
+                margin-top: 1vh;
+            }
+                .UlMaster .btn:hover{
+                    color: var(--corE);
+                    cursor: pointer;
+                    border-color: var(--corE);
+                }
+                .UlMaster .btn:active{
+                    cursor: grabbing;
+                    border: none;
+                    color: var(--corD);
+                    background-color: rgb(22 10 64 / 20%);
+                }
+            .UlMaster .AltSenha{
+                position: absolute;
+                margin: -1vh 0vw 0vh -21vw;
+                background-color: rgb(22 10 64 / 20%);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                border-radius: 0.25vw;
+                border: 1px solid var(--corA);
+                padding: 1vh 3.5vw;
+                backdrop-filter: blur(0.2vw);
+            }
+                .AltSenha h2{
+                    color: var(--corE);
+                    font-size: 3vh;
+                    font-family: monospace;
+                    font-weight: bold;
+                    font-style: italic;
+                    margin-top: 1vh;
+                    margin-bottom: 2vh;
+                }
+                .AltSenha .pass{
+                    height: 4vh;
+                    padding: 0 1vw;
+                    border: none;
+                    font-family: cursive;
+                    outline: 0;
+                    transition: .2s;
+                    margin-top: 3vh;
+                    color: var(--corA);
+                    font-size: 1.5vh;
+                    font-weight: bold;
+                    background-color: rgb(32 20 115 / 50%);
+                    width: 11vw;
+                    border-bottom: 2px solid var(--corA);
+                }
+                    .AltSenha .pass:focus{
+                        cursor: text;
+                        color: var(--corE);
+                        border-color: var(--corE);
+                    }
+                    .AltSenha .pass:hover{
+                        cursor: pointer;
+                        width: 12vw;
+                    }
+                    .AltSenha .pass::placeholder{
+                        color: rgb(119 242 230 / 60%);
+                    }
+                .AltSenha .btn{
+                    color: var(--corA);
+                    background-color: rgb(32 20 115 / 80%);
+                    font-size: 2vh;
+                    font-family: fangsong;
+                    font-weight: bold;
+                    border: none;
+                    border-bottom: 0.4vh solid var(--corA);
+                    width: 8vw;
+                    text-align: center;
+                    padding: 0vh 1vw;
+                    height: 4vh;
+                    margin-top: 1vh;
+                }
+                    .AltSenha .btn:hover{
+                        color: var(--corE);
+                        cursor: pointer;
+                        border-color: var(--corE);
+                    }
+                    .AltSenha .btn:active{
+                        cursor: grabbing;
+                        border: none;
+                        color: var(--corA);
+                        background-color: rgb(32 20 115 / 30%);
+                    }

@@ -1,0 +1,44 @@
+:root{
+  --corA: #9450F2; 
+  --corB: #160A40; 
+  --corC: #201473; 
+  --corD: #0C0826;
+  --corE: #77F2E6;
+}
+* {
+    margin: 0px;
+    padding: 0px;
+    overflow-y: hidden;
+  }
+  
+  /*web-kit*/
+    input[type=file] {
+        display: none;
+    }
+    
+    ::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+    
+    ::-webkit-scrollbar {
+        width: 2px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        background: rgb(0 0 0 /50%);
+    }
+  
+  .ocultar {
+    display: none;
+  }
+  
+    button:focus, button:focus-visible, input:focus-visible, input:focus, select:focus-visible, select:focus, textarea:focus-visible, textarea:focus {
+        outline: none;
+    }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }

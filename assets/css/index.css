@@ -1,0 +1,92 @@
+@import 'preset.css';
+
+body{
+  font-family: system-ui;
+}  
+  .container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+  }
+    .left {
+      overflow: hidden;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0vh 2vw;
+      background-color: var(--corE);
+    }
+      .header{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+        .header h2{
+          margin: 0;
+          color: var(--corB);
+          font-size: 3vh;
+        }
+        .header h4 {
+          margin-top: 1vh;
+          font-weight: normal;
+          font-size: 1.5vh;
+          color: var(--corC);
+        }
+      .form {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 35vh;
+      }
+      .form-field {
+        height: 4vh;
+        padding: 0 1vw;
+        border: none;
+        font-family: cursive;
+        outline: 0;
+        transition: .2s;
+        margin-top: 3vh;
+        color: var(--corD);
+        font-size: 1.5vh;
+        font-weight: bold;
+        background-color: rgb(148 80 242 / 8%);
+        width: 19vw;
+        border-bottom: 2px solid var(--corC);
+      }
+        .form-field:focus {
+          border-color: var(--corA);
+          color: var(--corA);
+        }
+        .form .btn {
+          padding: 1vh 2vw;
+          border: none;
+          background: var(--corA);
+          border-radius: 0.5vw;
+          margin-top: 7vh;
+          color: var(--corE);
+          font-family: system-ui;
+          font-size: 2vh;
+          font-weight: bold;
+          letter-spacing: 4px;
+          box-shadow: 0vw 0.5vh 0vw var(--corC);
+        }
+          .form .btn:hover{
+            cursor: pointer;
+            box-shadow: 0vw 1vh 0vw 0vw var(--corC);
+          }
+          .form .btn:active{
+            cursor: grabbing;
+            box-shadow: none;
+          }
+    .right {
+      flex: 1;
+      background-color: var(--corD);
+      transition: 1s;
+      background-image: url(../imgs/BackLogin.png);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
