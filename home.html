@@ -21,7 +21,7 @@
           <div class="UlMaster">
             <i class="fa-solid fa-user"></i>
             <button class="btn" onclick="FormOpen(this, 1, '#AltSenha')">Alterar Senha</button>
-            <form action="" method="post" class="AltSenha ocultar" id="AltSenha">
+            <form method="post" class="AltSenha ocultar" id="AltSenha">
               <h2>Alterar Senha</h2>
               <input type="password" name="" class="pass" placeholder="Nova senha">
               <input type="password" name="" class="pass" placeholder="confirme a Nova senha">
@@ -56,11 +56,11 @@
     </body>
     <script>
       function FormOpen(btn, fun, form){
-        let div = document.querySelector(form);
-        ocultar(div, fun);
+        let frm = document.querySelector(form);
+        ocultar(frm, fun);
         let invertFun = fun==0? 1:0;
         let textFun = "FormOpen(this, "+invertFun+", '"+form+"')";
-        btn.setAtribute('onclick', textFun);
+        btn.setAttribute('onclick', textFun);
       }
     </script>
 </html>
