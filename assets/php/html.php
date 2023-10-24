@@ -57,7 +57,10 @@
         function Atalho($pag) {
             header("Location: $pag");
             exit();
-        }              
+        }
+        function Cripto($Pala){
+            return base64_encode($Pala);
+        }     
     }
 
     final class BankUse

@@ -39,7 +39,7 @@ body{
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: 35vh;
+        height: 40vh;
       }
       .form-field {
         height: 4vh;
@@ -65,7 +65,7 @@ body{
           border: none;
           background: var(--corA);
           border-radius: 0.5vw;
-          margin-top: 7vh;
+          margin-top: 5vh;
           color: var(--corE);
           font-family: system-ui;
           font-size: 2vh;

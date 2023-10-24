@@ -31,3 +31,13 @@ function redirect(page) {
 function adamCendler(btn){
 	btn.click();
 }
+
+function PreViewImg(input, imgPreview){
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $(imgPreview).attr('style', "background-image: url('"+e.target.result+"');");
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}

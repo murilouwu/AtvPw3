@@ -1,0 +1,25 @@
+.btnLabel{
+    background-color: var(--corB);
+    color: var(--corE);
+    padding: 0.5vh 1vw;
+    border: none;
+    border-radius: 0.5vw;
+    font-family: system-ui;
+    font-size: 2vh;
+    font-weight: bold;
+    letter-spacing: 3px;
+    margin-top: 1vh;
+}
+    .btnLabel:hover{
+        cursor: pointer;
+    }
+.molde{
+    width: 10vh;
+    height: 10vh;
+    background-color: var(--corB);
+    border-radius: 10vw;
+    margin: 2vh 0vw;
+}
+.right{
+    background-image: url(../imgs/BackCad.png);
+}
