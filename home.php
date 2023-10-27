@@ -71,7 +71,7 @@
             <button class="btn" onclick="FormOpen(this, 1, '#CadastarProd')">Cadastar Produtos</button>
             <form method="post" class="AltSenha ocultar" id="CadastarProd" enctype="multipart/form-data">
               <h2>Cadastar Produtos</h2>
-              <input type="text" name="nome" class="pass">
+              <input type="text" name="nome" class="pass" placeholder="Digite o nome">
               <input type="file" name="foto" accept="image/*" id="fotoProduct">
               <label for="fotoProduct" class="btn">Enviar foto</label>
               <input type="submit" value="Criar" class="btn" name="cadProducts">
@@ -81,13 +81,13 @@
           <!--Relatório de produtos-->
           <div class="UlMaster">
             <i class="fa-solid fa-clipboard-list"></i>
-            <button class="btn">Relatório de Produtos</button>
+            <button class="btn" onclick="redirect('tables.php?Tab=produto')">Relatório de Produtos</button>
           </div>
           
           <!--Relatório de Clientes-->
           <div class="UlMaster">
             <i class="fa-solid fa-clipboard-list"></i>
-            <button class="btn">Relatório de Clientes</button>
+            <button class="btn" onclick="redirect('tables.php?Tab=cliente')">Relatório de Clientes</button>
           </div>
 
           <!--Sair-->
@@ -108,6 +108,7 @@
     </script>
 <?php
     $html->foot();
+    //alterar senha
     if(isset($_POST['pasNew'])){
       $Cd = $_POST['cd'];
       $senhas = array($_POST['NewPass'], $_POST['NewPassConf']);
@@ -127,6 +128,60 @@
         $html->mensage($resultado);
       }else{
         $html->mensage('senha escrita errada no confirmar senha!');
+      }
+    }
+
+    //criar client
+    if(isset($_POST['cadClients'])){
+      $ClientCad = array($_POST['nome'], $_POST['cor']);
+      if(!empty($ClientCad[0]) && !empty($ClientCad[1])){
+        $date = array('nome', 'cor');
+        $Verifcs = array(0, 1);
+        $Configs = array(array('AND'));
+
+        $ClientAction = new BankUse();
+        $ClientAction->NameTable = 'cliente';
+        $ClientAction->Dates = $date;
+
+        $ClientFun = $ClientAction->InsertUser($pdo, $ClientCad, $Verifcs, $Configs);
+        $html->mensage($ClientFun);
+      }else{
+        $html->mensage("Há campos vazios!");
+      }
+    }
+
+    //criar produto
+    if(isset($_POST['cadProducts'])){
+      $ProductCad = array($_POST['nome'], $_FILES['foto']);
+      if(!empty($ProductCad[0]) && !empty($ProductCad[1])){
+        $partes = explode('.', $ProductCad[1]['name']);
+        $extensao = end($partes);
+        
+        $imgLocal = 'assets/imgsBank/produtcs/'.$ProductCad[0].'Product.'.$extensao;
+        $FolderFile = 'assets/imgsBank/produtcs/';
+        $NameFile = $ProductCad[0].'Product.'.$extensao;
+
+        $imgVer = $html->upload($ProductCad[1], $FolderFile, $NameFile);
+        if($imgVer != true){
+            $html->mensage('erro no upload!');
+            if($imgVer != false){
+                echo $imgVer;
+            }
+        }else{
+          $ProductCad[1] = $imgLocal;
+          $date = array('nome', 'img');
+          $Verifcs = array(0);
+          $Configs = array();
+
+          $ProductAction = new BankUse();
+          $ProductAction->NameTable = 'produto';
+          $ProductAction->Dates = $date;
+
+          $ProductFun = $ProductAction->InsertUser($pdo, $ProductCad, $Verifcs, $Configs);
+          $html->mensage($ProductFun);
+        }
+      }else{
+        $html->mensage("Há campos vazios!");
       }
     }
 ?>

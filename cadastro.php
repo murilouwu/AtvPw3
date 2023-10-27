@@ -24,6 +24,7 @@
 ?>
     <body>
         <div class="container">
+            <button class="btnMain" onclick="redirect('home.php')"><i class="fa-solid fa-house-chimney"></i></button>
             <div class="left">
               <div class="header">
                 <h2>Cadastrar User</h2>

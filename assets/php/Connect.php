@@ -19,7 +19,7 @@ class Connect
 
 try{
     $connect = new Connect();
-    $pdo = $connect->makeConnection("atv_dois", "localhost", "root", "");
+    $pdo = $connect->makeConnection("atv_tres", "localhost", "root", "");
 } catch(PDOException $e){
     echo 'Error: '.$e->getMessage();
 }

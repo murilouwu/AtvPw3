@@ -144,7 +144,7 @@
                 $DateRequire = "*";
             }
             try{
-                $sql = "SELECT ".$DateRequire." FROM ".$this->NameTable." WHERE ".$Where.";";
+                $sql = "SELECT ".$DateRequire." FROM ".$this->NameTable." ".$Where;
                 $stmt = $pdo->prepare($sql);
                 if($stmt->execute()){
                     if($stmt->rowCount() > 0){

@@ -20,7 +20,7 @@
         if(!empty($userCad[0]) && !empty($userCad[1])){
             $date = array('nome', 'pass', 'nivel', 'img');
             $passCript = $html->Cripto($userCad[1]);
-            $where = $date[0]." = '".$userCad[0]."'";
+            $where = "WHERE ".$date[0]." = '".$userCad[0]."';";
 
             $UserAction = new BankUse();
             $UserAction->NameTable = 'user';
@@ -50,17 +50,17 @@
         }
 
     }else if(isset($_POST['Cad'])){
-        $userCad = array($_POST['nome'], $html->Cripto($_POST['senha']), $_POST['ADM']);
+        $userCad = array($_POST['nome'], $html->Cripto($_POST['senha']), $_POST['ADM'], $_FILES['perfil']);
 
-        if(!empty($userCad[0]) && !empty($userCad[1])){
-            $partes = explode('.', $_FILES['perfil']['name']);
+        if(!empty($userCad[0]) && !empty($userCad[1]) && !empty($userCad[3])){
+            $partes = explode('.', $userCad[3]['name']);
             $extensao = end($partes);
             
-            $imgLocal = 'assets/imgsBank/'.$_POST['nome'].'Perfil.'.$extensao;
+            $imgLocal = 'assets/imgsBank/'.$userCad[0].'Perfil.'.$extensao;
             $FolderFile = 'assets/imgsBank/';
-            $NameFile = $_POST['nome'].'Perfil.'.$extensao;
+            $NameFile = $userCad[0].'Perfil.'.$extensao;
 
-            $imgVer = $html->upload($_FILES['perfil'], $FolderFile, $NameFile);
+            $imgVer = $html->upload($userCad[3], $FolderFile, $NameFile);
             if($imgVer != true){
                 $html->mensage('erro no upload!');
                 if($imgVer != false){
