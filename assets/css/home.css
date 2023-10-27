@@ -31,6 +31,15 @@ body{
             font-family: monospace;
             margin-left: 1vw;
         }
+        .barLine .PerfilImagePrinc{
+            height: 25vh;
+            width: 25vh;
+            border-radius: 30vw;
+            position: absolute;
+            margin-bottom: 40vh;
+            margin-left: 8vw;
+            border: 0.35vw solid var(--corD);
+        }
     .LateralMain{
         height: 60vh;
         width: 22vw;

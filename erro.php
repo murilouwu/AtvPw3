@@ -1,12 +1,28 @@
 <?php
     require 'assets/php/html.php';
+    $html = new HtmlBased();
+    $html->HeaderEcho(
+        'Mensage', 
+        [
+            [0, 'http-equiv="X-UA-Compatible" content="IE=edge"'],
+            [0, 'name="viewport" content="width=device-width, initial-scale=1.0"'],
+            [1, 'assets/css/mens.css'],
+            [2, 'assets/java/script.js'],
+            [2, 'https://kit.fontawesome.com/39cab4bf95.js', 'crossorigin="anonymous"'],
+            [2, 'https://code.jquery.com/jquery-3.2.1.slim.js', 'integrity="sha256-tA8y0XqiwnpwmOIl3SGAcFl2RvxHjA8qp0+1uCGmRmg=" crossorigin="anonymous"'],
+        ],
+        ''
+    );
+    echo '<body>';
     if(isset($_SESSION['user'][0])){
         if($_SESSION['user'][0]['nivel'] != 1){
-            echo '<h1>Você não é Adiministrador!!!</h1>';
+            echo 'Você não é Adiministrador!!!';
             echo '<a href="home.php">Voltar</a>';
         }
     }else{
-        echo '<h1>Não há nada aqui</h1>';
+        echo 'Não há nada aqui';
         echo '<a href="index.php">Voltar</a>';
     }
+    echo '</body>';
+    $html->foot();
 ?>

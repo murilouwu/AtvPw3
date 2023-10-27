@@ -1,6 +1,7 @@
 <?php
     require 'Connect.php';
     session_start();
+    
     final class HtmlBased
     {
         function HeaderEcho($Title, $assets, $itemPlus) {
@@ -58,9 +59,28 @@
             header("Location: $pag");
             exit();
         }
+
         function Cripto($Pala){
-            return base64_encode($Pala);
-        }     
+            return password_hash($Pala, PASSWORD_BCRYPT);
+        }   
+        
+        function CriptoVer($Pass, $Hash){
+            return password_verify($Pass, $Hash);
+        }
+
+        function upload($file, $pastSave, $NewName){
+            if ($file['error'] === 0) {
+                $nome_arquivo = $pastSave . $NewName;
+
+                if (move_uploaded_file($file['tmp_name'], $nome_arquivo)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return 'Erro no upload: ' . $file['error'];
+            }
+        }
     }
 
     final class BankUse
@@ -109,7 +129,7 @@
                         $stmt->bindParam($dateParam, $Vls[$key]);
                     }
                     if ($stmt->execute()) {
-                        return 'cadastrado com sucesso :)';
+                        return 'sucesso';
                     } else {
                         throw new Exception('Erro ao cadastrar ;-;');
                     }
@@ -139,5 +159,34 @@
                 return 'Error: '.$e->getMessage();
             }
         }
+
+        function UpdateUser($pdo, $UpdateData, $Values, $Where){
+            $Updates = '';
+            foreach ($UpdateData as $key => $column) {
+                if ($key === 0) {
+                    $Updates .= $column . ' = :' . $column;
+                } else {
+                    $Updates .= ', ' . $column . ' = :' . $column;
+                }
+            }
+
+            $sql = "UPDATE " . $this->NameTable . " SET " . $Updates . " WHERE " . $Where;
+            $stmt = $pdo->prepare($sql);
+
+            foreach ($UpdateData as $column) {
+                $param = ':' . $column;
+                $value = $Values[$column];
+                $stmt->bindParam($param, $value);
+            }
+
+            if ($stmt->execute()) {
+                return 'sucesso.';
+            } else {
+                throw new Exception('Erro ao atualizar os dados.');
+            }
+        }
+
+
+
     }
 ?>

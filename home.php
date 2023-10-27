@@ -13,13 +13,19 @@
         ],
         ''
     );
-    $_SESSION['user'] = array();
+
+    if(!isset($_SESSION['user'][0])){
+        $html->Atalho('erro.php');
+    }
 ?>
     <body>
         <div class="barLine">
           <div class="ulBar"></div>
           <i class="fa-solid fa-house-chimney"></i>
           <h2 class="TitleSite">Home</h2>
+          <?php
+            echo '<img src="'.$_SESSION['user'][0]['img'].'" class="PerfilImagePrinc">';
+          ?>
         </div>
         <div class="LateralMain">
           <!--Perfil Edit-->
@@ -28,17 +34,24 @@
             <button class="btn" onclick="FormOpen(this, 1, '#AltSenha')">Alterar Senha</button>
             <form method="post" class="AltSenha ocultar" id="AltSenha">
               <h2>Alterar Senha</h2>
+              <input type="number" name="cd" class="ocultar" value="<?php echo $_SESSION['user'][0]['cd']?>">
               <input type="password" name="NewPass" class="pass" placeholder="Nova senha">
               <input type="password" name="NewPassConf" class="pass" placeholder="confirme a Nova senha">
               <input type="submit" value="Alterar" class="btn" name="pasNew">
             </form>
           </div>
 
-          <!--Cadastro de Users-->
-          <div class="UlMaster">
-            <i class="fa-solid fa-user-plus"></i>
-            <button class="btn" onclick="redirect('cadastro.php')">Cadastar Usuário</button>
-          </div>
+          <?php
+            if($_SESSION['user'][0]['nivel'] == 1){
+              echo '
+              <!--Cadastro de Users-->
+              <div class="UlMaster">
+                <i class="fa-solid fa-user-plus"></i>
+                <button class="btn" onclick="redirect(\'cadastro.php\')">Cadastar Usuário</button>
+              </div>
+              ';
+            }
+          ?>
 
           <!--Cadastro de Cliente-->
           <div class="UlMaster">
@@ -76,6 +89,12 @@
             <i class="fa-solid fa-clipboard-list"></i>
             <button class="btn">Relatório de Clientes</button>
           </div>
+
+          <!--Sair-->
+          <div class="UlMaster">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <button class="btn" onclick="redirect('index.php')">Sair</button>
+          </div>
         </div>
     </body>
     <script>
@@ -89,4 +108,25 @@
     </script>
 <?php
     $html->foot();
+    if(isset($_POST['pasNew'])){
+      $Cd = $_POST['cd'];
+      $senhas = array($_POST['NewPass'], $_POST['NewPassConf']);
+
+      if($senhas[0] == $senhas[1]){
+        $date = array('nome', 'pass', 'nivel', 'img');
+        $UpdateData = ['pass'];
+        $NewPass = $html->Cripto($senhas[0]);
+        $Values = ['pass' => $NewPass];
+        $Where = 'cd = '.$Cd;
+
+        $UserAction = new BankUse();
+        $UserAction->NameTable = 'user';
+        $UserAction->Dates = $date;
+
+        $resultado = $UserAction->UpdateUser($pdo, $UpdateData, $Values, $Where);
+        $html->mensage($resultado);
+      }else{
+        $html->mensage('senha escrita errada no confirmar senha!');
+      }
+    }
 ?>

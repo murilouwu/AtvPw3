@@ -1,0 +1,16 @@
+|----------------------------|
+|                            |
+| Lista de Usuários padrões: |
+|                            |
+|----------------------------|
+| Nome:   | Senha:       |ADM|
+|----------------------------|
+| Maria   | 'password123'| N |
+| Lucas   | 'letmein'    | N |
+| Miguel  | '123456789'  | N |
+| Murilo  | 'Peruibe1'   | S |
+|----------------------------|
+
+ADM - adiminstrador
+N - Não
+S - Sim
