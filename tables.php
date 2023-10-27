@@ -33,13 +33,7 @@
                     $Table->Dates = $date;
                     $stmt = $Table->GetUser($pdo, "", "");
 
-                    if($stmt->rowcount() == 0){
-                        echo '
-                        <tr class="Top">
-                            <th class="total">Não há dados</th>
-                        </tr>
-                        ';
-                    }else{
+                    if($stmt != 'Não Encontrado'){
                         echo '
                             <tr class="Top">
                                 <th class="total">'.$_GET['Tab'].'s:</th>
@@ -77,6 +71,12 @@
                             </tr>
                             ';
                         }
+                    }else{
+                        echo '
+                        <tr class="Top">
+                            <th class="total">Não há dados</th>
+                        </tr>
+                        ';
                     }
                 ?>
             </table>
