@@ -68,7 +68,7 @@
                             if($_GET['Tab'] == 'cliente'){
                                 echo '<td><i class="fa-solid fa-fill-drip" style="color: '.$row['cor'].';"></i></td>';
                             }else{
-                                echo '<td><img src="'.$row['img'].'" style="height: 3vh; width: 3vh; border-radius: 10vw; border: 0.05vw solid var(--corD);"></td>';
+                                echo '<td><img src="'.$row['img'].'" style="height: 3vh; width: 3vh; border-radius: 0.2vw; border: 0.05vw solid var(--corD);"></td>';
                             }
                             echo '
                                 <td>
